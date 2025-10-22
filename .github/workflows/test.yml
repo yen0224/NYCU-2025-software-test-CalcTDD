@@ -25,11 +25,11 @@ jobs:
     - name: Display Python version
       run: uv run python --version
 
-    - name: Run tests with verbose output
+    - name: Run all tests with verbose output
       run: |
-        uv run python -m unittest CalcTest.py -v
+        uv run python -m unittest discover -s . -p "*Test.py" -v
 
     - name: Run tests with simple output
       if: always()
       run: |
-        uv run python CalcTest.py
+        uv run python -m unittest discover -s . -p "*Test.py"

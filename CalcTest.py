@@ -32,5 +32,11 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calc.divide(10, 0)  # Expect division by zero to raise ValueError
 
+    def test_intentional_failure(self):
+        """This test intentionally fails to demonstrate CI failure detection"""
+        calc = Calculator()
+        # This assertion is intentionally wrong to break the build
+        self.assertEqual(calc.add(2, 2), 5, "Intentional failure: 2 + 2 should be 4, not 5")
+
 if __name__ == "__main__":
     unittest.main()
